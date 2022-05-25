@@ -1,12 +1,31 @@
 import { Divider, Flex, Heading, Text } from "@chakra-ui/layout";
-import { Avatar, IconButton } from "@chakra-ui/react";
+import { Avatar, IconButton, toast, useToast } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import { FiHome, FiKey, FiMenu } from 'react-icons/fi';
+import { api } from "../api/index.api";
+import { store } from "../stores/index.store";
 import { NavItem } from "./NavItem";
 
 export const SideBar: FC =()=>{
    const [navSize, changeNavSize] = useState('large');
+   const { user, removeUser } = store.application((state) => state);
 
+   const toast = useToast();
+   const handleSignOut=async()=>{
+     try{
+      const SignOutUser= await api.account.signout();
+      removeUser();
+      window.location.href = '/';
+     }
+     catch{
+      toast({
+        title: 'Failed to signout.',
+        position: 'top',
+        status: 'error',
+      });
+     }
+  
+   }
 
   return (
 
@@ -45,7 +64,7 @@ export const SideBar: FC =()=>{
           
     />
   <NavItem navSize={navSize} icon={FiHome} title="Dashboard"/>
-  <NavItem navSize={navSize} icon={FiKey} title="Log Out"/>
+  <NavItem navSize={navSize} icon={FiKey} title="Log Out" handleSignOut={handleSignOut}/>
   </Flex>
           <Flex
                 p="5%"

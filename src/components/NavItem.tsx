@@ -3,7 +3,7 @@ import { Icon, Menu, MenuButton } from "@chakra-ui/react";
 import { FC } from "react";
 
 
-export const NavItem: FC<{navSize: string, icon: any, title: string}>=({navSize, icon, title})=>{
+export const NavItem: FC<{navSize: string, icon: any, title: string, handleSignOut?: any}>=({navSize, icon, title, handleSignOut})=>{
 
  const style: any = navSize=='large' && '100%'
 
@@ -20,6 +20,7 @@ export const NavItem: FC<{navSize: string, icon: any, title: string}>=({navSize,
         borderRadius={8}
         _hover={{ textDecor: 'none', backgroundColor: "#AEC8CA" }}
         w={style}
+        onClick={handleSignOut}
     >
     <MenuButton w='100%'>
       <Flex>
