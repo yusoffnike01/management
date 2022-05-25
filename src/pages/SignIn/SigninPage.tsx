@@ -30,13 +30,13 @@ export const SigninPage: FC = () => {
       toast({
         title: 'Failed to signin.',
         description: `Incorrect email address or password. Please try again!`,
-        position: 'top-right',
-        status: 'warning',
+        position: 'bottom',
+        status: 'error',
+        duration: 2000,
         isClosable: true,
       });
     }
   });
-
 
   const onSubmit: SubmitHandler<SigninParams> = async (data) => {
     signin(data);

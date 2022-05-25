@@ -1,6 +1,6 @@
 import { Divider, Flex, Heading, Text } from "@chakra-ui/layout";
 import { Avatar, IconButton, toast, useToast } from "@chakra-ui/react";
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { FiHome, FiKey, FiMenu } from 'react-icons/fi';
 import { api } from "../api/index.api";
 import { store } from "../stores/index.store";
@@ -9,9 +9,9 @@ import { NavItem } from "./NavItem";
 export const SideBar: FC =()=>{
    const [navSize, changeNavSize] = useState('large');
    const { user, removeUser } = store.application((state) => state);
-
+console.log(user);
    const toast = useToast();
-   const handleSignOut=async()=>{
+   const handleSignOut=useCallback(async()=>{
      try{
       const SignOutUser= await api.account.signout();
       removeUser();
@@ -25,7 +25,7 @@ export const SideBar: FC =()=>{
       });
      }
   
-   }
+   },[user])
 
   return (
 
@@ -85,13 +85,13 @@ export const SideBar: FC =()=>{
                 flexDir="column" 
                 ml={4} 
                 display={navSize == "small" ? "none" : "flex"}
+                w='75%'
           >
-          <Heading 
-                  as="h3" 
-                  size="sm"
+          <Text 
+          fontSize='xs'
           >
-            Yusoff
-          </Heading>
+          {user.email}
+          </Text>
          <Text>
            Admin
          </Text>
