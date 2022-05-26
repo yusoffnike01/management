@@ -6,7 +6,7 @@ import { AppRouter } from './router/routes';
 import { FallbackSpinner } from './components/FallbackSpinner';
 import { useAxiosLoader } from './effects/axios.effect';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import './assets/css/tailwind.css';
 
 const App: FC=memo(()=>{
   useAxiosLoader();

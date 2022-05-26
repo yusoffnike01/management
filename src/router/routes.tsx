@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense } from 'react';
+import { FC, lazy } from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router';
 import { store } from '../stores/index.store';
 import {history} from './history';

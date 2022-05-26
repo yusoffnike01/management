@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { MoonLoader } from "react-spinners";
+import { Progress } from '@chakra-ui/react'
 
 export const FallbackSpinner: FC=()=>{
   return (
     <div>
-      Loading...
+      <Progress size='xs' isIndeterminate />
     </div>
   )
 
