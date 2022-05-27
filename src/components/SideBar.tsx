@@ -2,6 +2,7 @@ import { Divider, Flex, Heading, Text } from "@chakra-ui/layout";
 import { Avatar, IconButton, toast, useToast } from "@chakra-ui/react";
 import { FC, useCallback, useState } from "react";
 import { FiHome, FiKey, FiMenu } from 'react-icons/fi';
+import { BsPerson } from "react-icons/bs";
 import { api } from "../api/index.api";
 import { store } from "../stores/index.store";
 import { NavItem } from "./NavItem";
@@ -13,7 +14,7 @@ console.log(user);
    const toast = useToast();
    const handleSignOut=useCallback(async()=>{
      try{
-      const SignOutUser= await api.account.signout();
+       await api.account.signout();
       removeUser();
       window.location.href = '/';
      }
@@ -64,6 +65,7 @@ console.log(user);
           
     />
   <NavItem navSize={navSize} icon={FiHome} title="Dashboard"/>
+  <NavItem navSize={navSize} icon={BsPerson} title="User Profile" />
   <NavItem navSize={navSize} icon={FiKey} title="Log Out" handleSignOut={handleSignOut}/>
   </Flex>
           <Flex

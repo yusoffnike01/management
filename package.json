@@ -14,6 +14,8 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@types/webfontloader": "^1.6.34",
+    "@fontsource/poppins": "^4.5.0",
+    "@fontsource/rubik": "^4.5.0",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
     "framer-motion": "^6",

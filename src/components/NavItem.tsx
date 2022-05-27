@@ -30,7 +30,10 @@ export const NavItem: FC<{navSize: string, icon: any, title: string, handleSignO
             color='#82AAAD'/>
         <Text 
             ml={5} 
-            display={navSize=='small' ? 'none' : 'flex'}>{title}
+            display={navSize=='small' ? 'none' : 'flex'}
+            fontWeight='bold'
+            
+            >{title}
         </Text>
       </Flex>
     </MenuButton>

@@ -6,7 +6,9 @@ import { AppRouter } from './router/routes';
 import { FallbackSpinner } from './components/FallbackSpinner';
 import { useAxiosLoader } from './effects/axios.effect';
 import { QueryClient, QueryClientProvider } from 'react-query';
+
 import './assets/css/tailwind.css';
+import { theme } from './providers/theme.provider';
 
 const App: FC=memo(()=>{
   useAxiosLoader();
@@ -19,7 +21,7 @@ const App: FC=memo(()=>{
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
     <App/>
     </QueryClientProvider>
