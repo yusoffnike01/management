@@ -1,5 +1,5 @@
 import { Box, Button, Checkbox, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Img, Input, Link, Stack, Text, useColorModeValue, useToast } from "@chakra-ui/react";
-import { FC, useEffect} from "react"
+import { FC} from "react"
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { api } from "../../api/index.api";
 import { useMutation } from "react-query";
@@ -8,7 +8,7 @@ import { history } from "../../router/history";
 import { SigninParams } from "../../interfaces/account.interface";
 import signInImage from '../../assets/img/mainimage.png'
 import { chakra } from "@chakra-ui/react"
-import WebFont from 'webfontloader';
+
 
 
 
@@ -19,15 +19,6 @@ export const SigninPage: FC = () => {
   const { setUser } = store.application((state) => state);
   const toast = useToast();
 
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Droid Sans', 'Chilanka']
-      }
-    });
-   }, []);
-
-   
   // Sign in 
   const { mutate: signin } = useMutation(api.account.signin, {
     onSuccess: (data) => {
@@ -83,7 +74,7 @@ export const SigninPage: FC = () => {
               mt={{ md: "150px", lg: "90px" }}
           >
             <Heading fontSize='32px' mb='10px'>
-              Welcome Back Student Management System 
+              Welcome Back Student Record  Management System 
             </Heading>
             <Text
               mb='36px'

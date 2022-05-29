@@ -19,7 +19,8 @@ export const publicRoutes =[
 ]
 
 export const privateRoutes=[
-  {path: '/homepage', component: <HomePage/>}
+  {path: '/homepage', component: <HomePage/>},
+  { path: '*', component: <Redirect to="/homepage" /> },
 ]
 export const AppRouter: FC=()=>{
   const { isLoggedIn } = store.application((state)=>state);
