@@ -10,7 +10,6 @@ import { NavItem } from "./NavItem";
 export const SideBar: FC =()=>{
    const [navSize, changeNavSize] = useState('large');
    const { user, removeUser } = store.application((state) => state);
-console.log(user);
    const toast = useToast();
    const handleSignOut=useCallback(async()=>{
      try{
@@ -90,9 +89,9 @@ console.log(user);
                 w='75%'
           >
           <Text 
-          fontSize='xs'
+          fontSize='sm'
           >
-          {user.email}
+          {user.fullname}
           </Text>
          <Text>
            Admin
