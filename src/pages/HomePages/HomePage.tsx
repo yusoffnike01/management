@@ -1,5 +1,6 @@
 import { Flex } from "@chakra-ui/layout";
 import { FC } from "react";
+import { Dashboard } from "../../components/dashboard";
 import { SideBar } from "../../components/SideBar";
 
 export const HomePage: FC=()=>{
@@ -8,8 +9,9 @@ export const HomePage: FC=()=>{
     <div>
       <Flex>
       <SideBar/>
+      <Dashboard/>
       </Flex>
-     
+    
 
     </div>
   )
