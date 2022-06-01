@@ -1,5 +1,6 @@
-import { FC, lazy } from 'react';
+import { FC, lazy, Suspense } from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router';
+import { AdminLayout } from '../components/layout/AdminLayout';
 import { store } from '../stores/index.store';
 import {history} from './history';
 
@@ -19,8 +20,14 @@ export const publicRoutes =[
 ]
 
 export const privateRoutes=[
-  {path: '/homepage', component: <HomePage/>},
-  { path: '*', component: <Redirect to="/homepage" /> },
+  {path: '', 
+  component: AdminLayout,
+  children:[
+    { path: '/', component: <HomePage /> },
+    { path: '*', component: <Redirect to="/" /> }
+  ]
+}
+
 ]
 export const AppRouter: FC=()=>{
   const { isLoggedIn } = store.application((state)=>state);
@@ -30,8 +37,23 @@ export const AppRouter: FC=()=>{
       <Switch>
         {isLoggedIn && 
           privateRoutes.map((route)=>
-          <Route path={route.path} key={route.path} exact>
-            {route.component}
+          <Route 
+                path={route.path} 
+                key={route.path} 
+                render={({location})=>(
+                  <route.component>
+                    <Switch location={location} key={location.pathname}>
+                      {route.children.map((child) => (
+                        <Route path={child.path} key={child.path} exact>
+                            {child.component}
+   
+                        </Route>
+                      ))}
+                    </Switch>
+                  </route.component>
+                )}
+                >
+   
           </Route>
           )
         
