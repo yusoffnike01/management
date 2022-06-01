@@ -2,6 +2,7 @@ import { Box, Center, Divider, Text } from "@chakra-ui/layout";
 import { Img } from "@chakra-ui/react";
 import { FC } from "react";
 import { MiniStatisticParams } from "../interfaces/Dashboard";
+import { Counter } from "./Counter";
 
 export const MiniStatistic: FC<MiniStatisticParams>=(params: MiniStatisticParams)=>{
   
@@ -32,7 +33,7 @@ export const MiniStatistic: FC<MiniStatisticParams>=(params: MiniStatisticParams
             pr='30px'
             mt='-24px'
             >
-       {params.value}
+              <Counter from={0} to={params.value}/>
       </Text>
       <Center
             height='50px'

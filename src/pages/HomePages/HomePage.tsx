@@ -6,14 +6,7 @@ import { SideBar } from "../../components/SideBar";
 export const HomePage: FC=()=>{
   console.log('homepage')
   return (
-    <div>
-      <Flex>
-      <SideBar/>
       <Dashboard/>
-      </Flex>
-    
-
-    </div>
   )
 }
 
